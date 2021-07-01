@@ -1,0 +1,47 @@
+.carousel {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: "overlap";
+}
+
+@for $i from 1 through 3 {
+    .carousel-item-#{$i} {
+        position: relative;
+        grid-area: overlap;
+        animation-name: rotate;
+        animation-duration: 15s;
+        animation-iteration-count: infinite;
+        animation-delay: -#{($i - 1)*5}s;
+        // z-index: #{4 - $i};
+        
+    }
+
+    @keyframes rotate {
+        0% {
+            transform: scale(0.9);
+            left: 0%;
+            opacity: 1;
+            z-index: 3;
+        }
+        33% {
+            transform: scale(0.8);
+            left: 10%;
+            opacity: 0.4;
+            z-index: 2;
+        }
+        66% {
+            transform: scale(0.8);
+            left: -10%;
+            opacity: 0.4;
+            z-index: 1;
+        }
+        100% {
+            transform: scale(0.9);
+            left: 0%;
+            opacity: 1;
+            z-index: 3;
+        } 
+    }
+}
+
